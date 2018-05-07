@@ -1,6 +1,6 @@
-﻿using OrmBenchmark.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using OrmBenchmark.Core;
 
 namespace OrmBenchmark.Ado
 {
@@ -10,9 +10,9 @@ namespace OrmBenchmark.Ado
 
         public string Name => "ADO (Pure)";
 
-        public void Init(string connectionStrong)
+        public void Init(string connectionString)
         {
-            conn = new SqlConnection(connectionStrong);
+            conn = new SqlConnection(connectionString);
             conn.Open();
         }
 

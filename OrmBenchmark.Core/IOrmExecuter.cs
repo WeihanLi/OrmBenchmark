@@ -6,7 +6,7 @@ namespace OrmBenchmark.Core
     {
         string Name { get; }
 
-        void Init(string connectionStrong);
+        void Init(string connectionString);
 
         IPost GetItemAsObject(int id);
 

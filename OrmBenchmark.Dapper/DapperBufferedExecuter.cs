@@ -1,8 +1,8 @@
-﻿using Dapper;
-using OrmBenchmark.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using Dapper;
+using OrmBenchmark.Core;
 
 namespace OrmBenchmark.Dapper
 {
@@ -12,9 +12,9 @@ namespace OrmBenchmark.Dapper
 
         public string Name => "Dapper Query (Buffered)";
 
-        public void Init(string connectionStrong)
+        public void Init(string connectionString)
         {
-            conn = new SqlConnection(connectionStrong);
+            conn = new SqlConnection(connectionString);
             conn.Open();
         }
 

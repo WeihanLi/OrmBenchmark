@@ -1,6 +1,6 @@
-﻿using OrmBenchmark.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using OrmBenchmark.Core;
 
 namespace OrmBenchmark.EntityFramework
 {
@@ -10,9 +10,9 @@ namespace OrmBenchmark.EntityFramework
 
         public string Name => "Entity Framework";
 
-        public void Init(string connectionStrong)
+        public void Init(string connectionString)
         {
-            ctx = new OrmBenchmarkContext(connectionStrong);
+            ctx = new OrmBenchmarkContext();
         }
 
         public IPost GetItemAsObject(int id)

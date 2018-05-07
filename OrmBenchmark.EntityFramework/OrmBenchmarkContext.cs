@@ -1,11 +1,11 @@
-﻿using OrmBenchmark.Core;
-using System.Data.Entity;
+﻿using System.Data.Entity;
+using OrmBenchmark.Core;
 
 namespace OrmBenchmark.EntityFramework
 {
     internal class OrmBenchmarkContext : DbContext
     {
-        public OrmBenchmarkContext(string connectionStrong)
+        public OrmBenchmarkContext()
             : base("name=sqlServerLocal")
         {
         }

@@ -11,9 +11,9 @@ namespace OrmBenchmark.Dapper
 
         public string Name => "Dapper Query (First Or Default)";
 
-        public void Init(string connectionStrong)
+        public void Init(string connectionString)
         {
-            conn = new SqlConnection(connectionStrong);
+            conn = new SqlConnection(connectionString);
             conn.Open();
         }
 

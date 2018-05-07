@@ -1,7 +1,7 @@
-﻿using OrmBenchmark.Core;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using OrmBenchmark.Core;
 using WeihanLi.Extensions;
 
 namespace OrmBenchmartk.WeihanLi.Common
@@ -11,15 +11,15 @@ namespace OrmBenchmartk.WeihanLi.Common
         public string Name => "WeihanLi.Common";
         private SqlConnection conn;
 
-        public void Init(string connectionStrong)
+        public void Init(string connectionString)
         {
-            conn = new SqlConnection(connectionStrong);
+            conn = new SqlConnection(connectionString);
             conn.Open();
         }
 
-        public IPost GetItemAsObject(int Id)
+        public IPost GetItemAsObject(int id)
         {
-            return conn.Fetch<Post>("select * from Posts where Id = @Id", new { Id });
+            return conn.Fetch<Post>("select * from Posts where Id = @Id", new { Id = id });
         }
 
         public IList<IPost> GetAllItemsAsObject()

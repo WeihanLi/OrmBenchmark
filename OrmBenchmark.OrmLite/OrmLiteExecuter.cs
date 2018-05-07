@@ -1,8 +1,8 @@
-﻿using OrmBenchmark.Core;
-using ServiceStack.OrmLite;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using OrmBenchmark.Core;
+using ServiceStack.OrmLite;
 
 namespace OrmBenchmark.OrmLite
 {
@@ -13,9 +13,9 @@ namespace OrmBenchmark.OrmLite
 
         public string Name => "Orm Lite";
 
-        public void Init(string connectionStrong)
+        public void Init(string connectionString)
         {
-            dbFactory = new OrmLiteConnectionFactory(connectionStrong, SqlServerDialect.Provider);
+            dbFactory = new OrmLiteConnectionFactory(connectionString, SqlServerDialect.Provider);
             conn = dbFactory.Open();
         }
 
