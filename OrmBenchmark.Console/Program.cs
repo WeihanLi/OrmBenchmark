@@ -1,8 +1,11 @@
-﻿using OrmBenchmark.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using OrmBenchmark.Core;
+using WeihanLi.Common;
+using WeihanLi.Common.Helpers;
 
 namespace OrmBenchmark.ConsoleUI
 {
@@ -10,7 +13,17 @@ namespace OrmBenchmark.ConsoleUI
     {
         public static void Main(string[] args)
         {
-            string connStr = ConfigurationManager.ConnectionStrings["sqlServerLocal"].ConnectionString;
+            var configurationBuilder = new ConfigurationBuilder();
+            configurationBuilder.AddJsonFile("appsettings.json");
+            var configuration = configurationBuilder.Build();
+
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddSingleton<IConfiguration>(configuration);
+
+            DependencyResolver.SetDependencyResolver(serviceCollection.BuildServiceProvider());
+
+            string connStr = ConfigurationHelper.ConnectionString("sqlServerLocal");
+
             bool warmUp = false;
 
             var benchmarker = new Benchmarker(connStr, 500);
@@ -21,7 +34,7 @@ namespace OrmBenchmark.ConsoleUI
             benchmarker.RegisterOrmExecuter(new Dapper.DapperBufferedExecuter());
             benchmarker.RegisterOrmExecuter(new Dapper.DapperFirstOrDefaultExecuter());
             benchmarker.RegisterOrmExecuter(new Dapper.DapperContribExecuter());
-            benchmarker.RegisterOrmExecuter(new EntityFramework.EntityFrameworkExecuter());
+            benchmarker.RegisterOrmExecuter(new EntityFrameworkCore.EntityFrameworkCoreExecuter());
             benchmarker.RegisterOrmExecuter(new OrmLite.OrmLiteExecuter());
 
             Console.Write("\nDo you like to have a warm-up stage(y/[n])?");

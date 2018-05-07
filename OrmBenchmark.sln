@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2009
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrmBenchmark.Core", "OrmBenchmark.Core\OrmBenchmark.Core.csproj", "{E4018574-EA43-4347-9822-0921AE52AF8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OrmBenchmark.Core", "OrmBenchmark.Core\OrmBenchmark.Core.csproj", "{E4018574-EA43-4347-9822-0921AE52AF8B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrmBenchmark.Console", "OrmBenchmark.Console\OrmBenchmark.Console.csproj", "{2B090F8B-4BFD-44B7-B8B7-D180EE919E8C}"
 EndProject
@@ -16,7 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrmBenchmark.EntityFramework", "OrmBenchmark.EntityFramework\OrmBenchmark.EntityFramework.csproj", "{2BA7706F-362E-4A68-901C-F9E9BEED49BF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrmBenchmark.EntityFrameworkCore", "OrmBenchmark.EntityFramework\OrmBenchmark.EntityFrameworkCore.csproj", "{2BA7706F-362E-4A68-901C-F9E9BEED49BF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrmBenchmark.OrmLite", "OrmBenchmark.OrmLite\OrmBenchmark.OrmLite.csproj", "{1F25B2D4-8026-42E8-BC28-227C949EF087}"
 EndProject

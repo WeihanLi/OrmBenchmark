@@ -1,18 +1,22 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using OrmBenchmark.Core;
+using OrmBenchmark.EntityFramework;
 
-namespace OrmBenchmark.EntityFramework
+namespace OrmBenchmark.EntityFrameworkCore
 {
-    public class EntityFrameworkExecuter : IOrmExecuter
+    public class EntityFrameworkCoreExecuter : IOrmExecuter
     {
         private OrmBenchmarkContext ctx;
 
-        public string Name => "Entity Framework";
+        public string Name => "Entity Framework Core";
 
         public void Init(string connectionString)
         {
-            ctx = new OrmBenchmarkContext();
+            var dbContextBuilder = new DbContextOptionsBuilder();
+            dbContextBuilder.UseSqlServer(connectionString);
+            ctx = new OrmBenchmarkContext(dbContextBuilder.Options);
         }
 
         public IPost GetItemAsObject(int id)
