@@ -1,5 +1,7 @@
 # OrmBenchmark
 
+[Chinese](README.CN.md)
+
 ## Intro
 
 The goal of the OrmBenchmark project is to determine how long it takes to execute select statement(s) against a MS SQL Server database and map the returned data to POCOc objects in different ORMs. (Well,acturally not exactly orm,more SqlMapper...)
@@ -15,7 +17,6 @@ For details:
 
 - [Net Framework](https://github.com/WeihanLi/OrmBenchmark/tree/netfx)
 - [Net Core](https://github.com/WeihanLi/OrmBenchmark/tree/netcore)
-
 
 ## Performance Tests
 
