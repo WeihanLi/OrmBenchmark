@@ -6,11 +6,11 @@ using OrmBenchmark.EntityFramework;
 
 namespace OrmBenchmark.EntityFrameworkCore
 {
-    public class EntityFrameworkCoreExecuter : IOrmExecuter
+    public class EntityFrameworkCoreNoTrackingExecuter : IOrmExecuter
     {
         private OrmBenchmarkContext ctx;
 
-        public string Name => "Entity Framework Core";
+        public string Name => "Entity Framework Core(No Tracking)";
 
         public void Init(string connectionString)
         {
@@ -21,12 +21,12 @@ namespace OrmBenchmark.EntityFrameworkCore
 
         public IPost GetItemAsObject(int id)
         {
-            return ctx.Posts.FirstOrDefault(p => p.Id == id);
+            return ctx.Posts.AsNoTracking().FirstOrDefault(p => p.Id == id);
         }
 
         public IList<IPost> GetAllItemsAsObject()
         {
-            return ctx.Posts.ToArray<IPost>();
+            return ctx.Posts.AsNoTracking().ToArray<IPost>();
         }
 
         public void Finish()
