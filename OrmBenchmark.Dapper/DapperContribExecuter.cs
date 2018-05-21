@@ -25,7 +25,7 @@ namespace OrmBenchmark.Dapper
 
         public IList<IPost> GetAllItemsAsObject()
         {
-            return conn.GetAll<Post>().ToList<IPost>();
+            return conn.GetAll<Post>().ToArray<IPost>();
         }
 
         public void Finish()
