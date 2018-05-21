@@ -1,8 +1,8 @@
-﻿using OrmBenchmark.Core;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using OrmBenchmark.Core;
 
 namespace OrmBenchmark.ConsoleUI
 {
@@ -22,6 +22,7 @@ namespace OrmBenchmark.ConsoleUI
             benchmarker.RegisterOrmExecuter(new Dapper.DapperFirstOrDefaultExecuter());
             benchmarker.RegisterOrmExecuter(new Dapper.DapperContribExecuter());
             benchmarker.RegisterOrmExecuter(new EntityFramework.EntityFrameworkExecuter());
+            benchmarker.RegisterOrmExecuter(new EntityFramework.EntityFrameworkNoTrackingExecuter());
             benchmarker.RegisterOrmExecuter(new OrmLite.OrmLiteExecuter());
 
             Console.Write("\nDo you like to have a warm-up stage(y/[n])?");
