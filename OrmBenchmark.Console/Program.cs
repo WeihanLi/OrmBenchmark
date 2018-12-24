@@ -63,6 +63,8 @@ namespace OrmBenchmark.ConsoleUI
             Console.WriteLine("\nPerformance of mapping 5000 rows to POCO objects in one iteration:");
             ShowResults(benchmarker.resultsForAllItems);
 
+            
+
             Console.ReadLine();
         }
 
