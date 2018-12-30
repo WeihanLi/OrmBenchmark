@@ -13,6 +13,8 @@ namespace OrmBenchmark.ConsoleUI
             string connStr = ConfigurationManager.ConnectionStrings["sqlServerLocal"].ConnectionString;
             bool warmUp = false;
 
+            var defaultColor = Console.ForegroundColor;
+
             var benchmarker = new Benchmarker(connStr, 500);
 
             benchmarker.RegisterOrmExecuter(new Ado.PureAdoExecuter());
@@ -49,6 +51,8 @@ namespace OrmBenchmark.ConsoleUI
 
             Console.WriteLine("\nPerformance of mapping 5000 rows to POCO objects in one iteration:");
             ShowResults(benchmarker.resultsForAllItems);
+
+            Console.ForegroundColor = defaultColor;
 
             Console.ReadLine();
         }
