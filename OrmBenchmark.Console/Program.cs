@@ -20,11 +20,12 @@ namespace OrmBenchmark.ConsoleUI
             var serviceCollection = new ServiceCollection();
             serviceCollection.AddSingleton<IConfiguration>(configuration);
 
-            DependencyResolver.SetDependencyResolver(serviceCollection.BuildServiceProvider());
+            DependencyResolver.SetDependencyResolver(serviceCollection);
 
             string connStr = ConfigurationHelper.ConnectionString("sqlServerLocal");
 
             bool warmUp = false;
+            var defaultColor = Console.ForegroundColor;
 
             var benchmarker = new Benchmarker(connStr, 500);
 
@@ -63,7 +64,7 @@ namespace OrmBenchmark.ConsoleUI
             Console.WriteLine("\nPerformance of mapping 5000 rows to POCO objects in one iteration:");
             ShowResults(benchmarker.resultsForAllItems);
 
-            
+            Console.ForegroundColor = defaultColor;
 
             Console.ReadLine();
         }
