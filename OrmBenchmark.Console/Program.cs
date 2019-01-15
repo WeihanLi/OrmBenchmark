@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OrmBenchmark.Core;
@@ -44,7 +46,11 @@ namespace OrmBenchmark.ConsoleUI
             if (str.Trim().ToLower() == "y" || str.Trim().ToLower() == "yes")
                 warmUp = true;
 
-            Console.WriteLine(".NET: " + Environment.Version);
+            var targetFrameworkVersion = Assembly.GetExecutingAssembly()
+                .GetCustomAttributes<TargetFrameworkAttribute>()
+                .First();
+            Console.WriteLine("TargetFrameworkVersion: " + targetFrameworkVersion.FrameworkDisplayName);
+
             Console.WriteLine("Connection string: {0}", connStr);
             Console.Write("\nRunning...");
             benchmarker.Run(warmUp);
