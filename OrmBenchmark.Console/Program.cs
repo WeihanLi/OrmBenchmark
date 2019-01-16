@@ -8,6 +8,7 @@ using Microsoft.Extensions.DependencyInjection;
 using OrmBenchmark.Core;
 using WeihanLi.Common;
 using WeihanLi.Common.Helpers;
+using WeihanLi.Extensions;
 
 namespace OrmBenchmark.ConsoleUI
 {
@@ -15,6 +16,11 @@ namespace OrmBenchmark.ConsoleUI
     {
         public static void Main(string[] args)
         {
+            var targetFrameworkVersion = Assembly.GetEntryAssembly()
+                .GetCustomAttributes<TargetFrameworkAttribute>()
+                .First();
+            Console.WriteLine("TargetFrameworkVersion: " + targetFrameworkVersion.FrameworkDisplayName.GetNotEmptyValueOrDefault(targetFrameworkVersion.FrameworkName));
+
             var configurationBuilder = new ConfigurationBuilder();
             configurationBuilder.AddJsonFile("appsettings.json");
             var configuration = configurationBuilder.Build();
@@ -45,11 +51,6 @@ namespace OrmBenchmark.ConsoleUI
             var str = Console.ReadLine();
             if (str.Trim().ToLower() == "y" || str.Trim().ToLower() == "yes")
                 warmUp = true;
-
-            var targetFrameworkVersion = Assembly.GetExecutingAssembly()
-                .GetCustomAttributes<TargetFrameworkAttribute>()
-                .First();
-            Console.WriteLine("TargetFrameworkVersion: " + targetFrameworkVersion.FrameworkDisplayName);
 
             Console.WriteLine("Connection string: {0}", connStr);
             Console.Write("\nRunning...");
